@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TODOlist — 투두리스트</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Gothic+A1:wght@400;500;700;900&family=Playfair+Display:ital,wght@1,500;1,700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="stars" aria-hidden="true">
+    <svg class="star star--1" viewBox="0 0 100 100"><path d="M50 1l12 34 36 1-28 22 10 35-30-21-30 21 10-35-28-22 36-1z"/></svg>
+    <svg class="star star--2" viewBox="0 0 100 100"><path d="M50 1l12 34 36 1-28 22 10 35-30-21-30 21 10-35-28-22 36-1z"/></svg>
+    <svg class="star star--3" viewBox="0 0 100 100"><path d="M50 1l12 34 36 1-28 22 10 35-30-21-30 21 10-35-28-22 36-1z"/></svg>
+    <svg class="star star--4" viewBox="0 0 100 100"><path d="M50 1l12 34 36 1-28 22 10 35-30-21-30 21 10-35-28-22 36-1z"/></svg>
+    <svg class="star star--5" viewBox="0 0 100 100"><path d="M50 1l12 34 36 1-28 22 10 35-30-21-30 21 10-35-28-22 36-1z"/></svg>
+    <svg class="star star--6" viewBox="0 0 100 100"><path d="M50 1l12 34 36 1-28 22 10 35-30-21-30 21 10-35-28-22 36-1z"/></svg>
+  </div>
+
+  <main class="page">
+    <div class="topbar">
+      <span class="topbar__date" id="today"></span>
+      <span class="topbar__stat">DONE <b id="progressLabel">0%</b></span>
+    </div>
+
+    <header class="masthead">
+      <h1 class="masthead__title">
+        <span class="masthead__sans">TODO</span><span class="masthead__serif">list</span>
+      </h1>
+    </header>
+
+    <hr class="rule" />
+
+    <section class="block">
+      <h2 class="block__label">WRITE A NEW ONE</h2>
+      <form class="composer" id="todoForm" autocomplete="off">
+        <div class="composer__field">
+          <button type="button" class="composer__star" id="starToggle" aria-pressed="false" title="중요 표시">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 3.5l2.6 5.3 5.9.86-4.25 4.14 1 5.86L12 16.9l-5.25 2.76 1-5.86L3.5 9.66l5.9-.86L12 3.5z" />
+            </svg>
+            <span class="sr-only">중요 표시</span>
+          </button>
+          <input
+            type="text"
+            id="todoInput"
+            class="composer__input"
+            placeholder="오늘 해야 할 일을 적어주세요"
+            maxlength="120"
+            required
+          />
+        </div>
+        <button type="submit" class="composer__submit">ADD TO LIST</button>
+      </form>
+    </section>
+
+    <section class="block">
+      <h2 class="block__label">THINGS TO DO</h2>
+
+      <nav class="filters" id="filters">
+        <button class="filters__btn is-active" data-filter="all">전체 <span data-count="all">0</span></button>
+        <button class="filters__btn" data-filter="important">중요 <span data-count="important">0</span></button>
+        <button class="filters__btn" data-filter="active">진행중 <span data-count="active">0</span></button>
+        <button class="filters__btn" data-filter="done">완료 <span data-count="done">0</span></button>
+      </nav>
+
+      <ul class="list" id="todoList"></ul>
+
+      <p class="empty" id="emptyState" hidden>
+        <span class="empty__icon">✱</span>
+        <span class="empty__text">아직 할일이 없어요</span>
+      </p>
+    </section>
+
+    <footer class="page__footer">
+      <span id="summary">할일 0개</span>
+      <button type="button" class="link-btn" id="clearDone">완료 항목 지우기 <i aria-hidden="true">→</i></button>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
